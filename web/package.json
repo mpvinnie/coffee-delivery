@@ -12,12 +12,14 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.4.2",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@types/react-input-mask": "^3.0.1",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",

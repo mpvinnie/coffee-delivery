@@ -17,9 +17,9 @@ export function Checkout() {
               </div>
             </header>
             <AddressInputs>
-              <Input placeholder='CEP' area='cep' />
+              <Input placeholder='CEP' area='cep' mask="99999-999" />
               <Input placeholder='Rua' area='street' />
-              <Input placeholder='Número' area='number' />
+              <Input placeholder='Número' area='number' type="number" min={1} />
               <Input placeholder='Complemento' area='complement' optional />
               <Input placeholder='Bairro' area='district' />
               <Input placeholder='Cidade' area='city' />
