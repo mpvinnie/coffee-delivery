@@ -12,16 +12,21 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
 
   const { name, description, tags, image_url, price } = coffee
 
-  // const formatPriceInReal = new Intl.NumberFormat('pt-BR', {
-  //   style: 'currency',
-  //   currency: 'BRL',
-  // })
-
-  // const priceInReal = formatPriceInReal.format(price)
-
   const priceInReal = price.toLocaleString('pt-BR', {
     minimumFractionDigits: 2
   })
+
+  function increaseCoffeeAmount() {
+    setAmount(state => state + 1)
+  }
+
+  function decreaseCoffeeAmount() {
+    if (amount <= 1) {
+      return
+    }
+
+    setAmount(state => state - 1)
+  }
 
   return (
     <CoffeeCardContainer>
@@ -35,11 +40,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         <span>{priceInReal}</span>
         <div>
           <CoffeeAmountContainer>
-            <button>
+            <button onClick={decreaseCoffeeAmount}>
               <Minus size={14} weight="bold" />
             </button>
             {amount}
-            <button>
+            <button onClick={increaseCoffeeAmount}>
               <Plus size={14} weight="bold" />
             </button>
           </CoffeeAmountContainer>

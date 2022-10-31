@@ -91,6 +91,10 @@ export const CoffeeAmountContainer = styled.div`
 
   button {
     color: ${props => props.theme['--purple']};
+
+    &:hover {
+      color: ${props => props.theme['--purple-dark']};
+    }
   }
 `
 
@@ -100,4 +104,8 @@ export const AddToCartButton = styled.button`
   background: ${props => props.theme['--purple-dark']};
   color: ${props => props.theme['--base-card']};
   border-radius: 6px;
+
+  &:hover {
+    background: ${props => props.theme['--purple']};
+  }
 `
