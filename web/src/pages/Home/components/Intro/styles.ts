@@ -11,6 +11,14 @@ export const IntroContainer = styled.div`
   width: 100%;
   padding: 6rem 0;
 
+  @media (max-width: 1180px) {
+    padding: 3rem 0;
+  }
+
+  @media (max-width: 640px) {
+    padding: 2rem 0;
+  }
+
   background-image: url(${introBackground});
   background-position: center;
   background-origin: content-box;
@@ -19,7 +27,16 @@ export const IntroContainer = styled.div`
 
   img {
     width: 30rem;
-    height: 22.5rem;
+    height: fit-content;
+
+    @media (max-width: 860px) {
+      width: 15rem;
+      height: fit-content;
+    }
+
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 `
 
@@ -29,6 +46,10 @@ export const  InfosContainer = styled.div`
   height: 22.5rem;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 1180px) {
+    height: auto;
+  }
 `
 
 export const Title = styled.div`
@@ -37,13 +58,20 @@ export const Title = styled.div`
     font-size: 48px;
     line-height: 1.3;
     font-weight: 800;
-    color: ${props => props.theme['--base-title']}
+    color: ${props => props.theme['--base-title']};
+    margin-bottom: 1rem;
+
+    @media (max-width: 640px) {
+      line-height: 1;
+    }
   }
 
   span {
     font-size: 1.25rem;
     line-height: 1.3;
-    color: ${props => props.theme['--base-subtitle']}
+    color: ${props => props.theme['--base-subtitle']};
+    display: block;
+    margin-bottom: 1.5rem;
   }
 `
 

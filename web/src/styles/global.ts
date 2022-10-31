@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+    background: none;
   }
 
   a {
