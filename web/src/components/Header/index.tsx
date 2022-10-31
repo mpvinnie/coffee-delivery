@@ -13,7 +13,7 @@ export function Header() {
           <span>Manaus, AM</span>
         </LocationContainer>
 
-        <CartLink href='#'>
+        <CartLink to='checkout'>
           <ShoppingCart size={22} weight="fill" />
         </CartLink>
       </div>

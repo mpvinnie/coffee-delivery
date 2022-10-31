@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.header`
@@ -34,7 +35,7 @@ export const LocationContainer = styled.div`
   }
 `
 
-export const CartLink = styled.a`
+export const CartLink = styled(NavLink)`
   padding: 0.5rem;
   border-radius: 6px;
   background: ${props => props.theme['--yellow-light']};

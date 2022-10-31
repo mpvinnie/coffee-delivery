@@ -29,11 +29,11 @@ export const GlobalStyle = createGlobalStyle`
 
   input, button {
     border: 0;
+    background: none;
   }
 
   button {
     cursor: pointer;
-    background: none;
   }
 
   a {
