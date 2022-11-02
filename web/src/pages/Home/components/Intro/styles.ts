@@ -87,28 +87,3 @@ export const Info = styled.div`
   align-items: center;
   gap: 0.75rem;
 `
-
-const ICON_COLORS = {
-  safe_buy: '--yellow-dark',
-  protected_package: '--base-text',
-  fast_delivery: '--yellow',
-  hot_coffee: '--purple'
-} as const
-
-interface IconProps {
-  iconType: keyof typeof ICON_COLORS
-}
-
-export const Icon = styled.div<IconProps>`
-  padding: 0.5rem;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: ${props => props.theme[ICON_COLORS[props.iconType]]};
-
-  svg {
-    color: ${props => props.theme['--background']};
-  }
-`

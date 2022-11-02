@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const CartContainer = styled.div`
@@ -103,7 +104,7 @@ export const Resume = styled.div`
   }
 `
 
-export const ConfirmOrderButton = styled.button`
+export const ConfirmOrderButton = styled(NavLink)`
   width: 100%;
   padding: 0.75rem;
   background: ${props => props.theme['--yellow']};

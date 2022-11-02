@@ -74,7 +74,7 @@ export function Cart() {
           <strong>R$ 33,20</strong>
         </p>
       </Resume>
-      <ConfirmOrderButton>
+      <ConfirmOrderButton to="/success">
         CONFIRMAR PEDIDO
       </ConfirmOrderButton>
     </CartContainer>
