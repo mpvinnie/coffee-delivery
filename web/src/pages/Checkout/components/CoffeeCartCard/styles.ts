@@ -1,13 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const CartContainer = styled.div`
-  padding: 0.5rem 2.5rem 2.5rem;
-  background: ${props => props.theme['--base-card']};
-  border-radius: 6px 44px 6px 44px;
-`
-
-export const CoffeeCartCard = styled.div`
+export const CoffeeCartCardContainer = styled.div`
   display: flex;
   gap: 1.25rem;
   padding: 1.5rem 0;
@@ -78,40 +71,4 @@ export const RemoveCoffeeButton = styled.button`
   svg {
     color: ${props => props.theme['--purple']};
   }
-`
-
-export const Resume = styled.div`
-  margin: 1.5rem 0;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  p:last-child label, p:last-child strong {
-    color: ${props => props.theme['--base-subtitle']};
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  label {
-    font-size: 0.875rem;
-  }
-
-  span, strong {
-    font-size: 1rem;
-    float: right;
-  }
-`
-
-export const ConfirmOrderButton = styled(NavLink)`
-  width: 100%;
-  padding: 0.75rem;
-  background: ${props => props.theme['--yellow']};
-  border-radius: 6px;
-
-  color: ${props => props.theme['--white']};
-  font-size: 0.875rem;
-  line-height: 1.6;
-  font-weight: bold;
 `
