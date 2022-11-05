@@ -164,6 +164,12 @@ export const CartContainer = styled.div`
   padding: 0.5rem 2.5rem 2.5rem;
   background: ${props => props.theme['--base-card']};
   border-radius: 6px 44px 6px 44px;
+
+  & > span {
+    display: block;
+    margin-top: 1rem;
+    color: ${props => props.theme['--base-label']};
+  }
 `
 
 export const Resume = styled.div`

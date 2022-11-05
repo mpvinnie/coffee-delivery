@@ -1,6 +1,7 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { CartLink, HeaderContainer, LocationContainer } from './styles'
 
+import { NavLink } from 'react-router-dom'
 import coffeeDeliveryLogo from '../../assets/coffee-delivery-logo.png'
 import { useCart } from '../../hooks/CartContext'
 
@@ -9,7 +10,9 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <img src={coffeeDeliveryLogo} />
+      <NavLink to="/">
+        <img src={coffeeDeliveryLogo} />
+      </NavLink>
       <div>
         <LocationContainer>
           <MapPin size={22} weight="fill" />

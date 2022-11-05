@@ -1,5 +1,8 @@
 import { createContext, ReactNode, useContext, useEffect, useReducer } from 'react'
-import { addCoffeeToCartAction, removeCoffeeFromCartAction } from '../reducers/cart/actions'
+import {
+  addCoffeeToCartAction, decreaseAmountAddedCoffeeAction,
+  increaseAmountAddedCoffeeAction, removeCoffeeFromCartAction
+} from '../reducers/cart/actions'
 import { AddedCoffee, cartReducer } from '../reducers/cart/reducer'
 import { Coffee } from '../server/coffees'
 
@@ -44,8 +47,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     localStorage.setItem('@coffee-delivery:cart-state-1.0.0', stateJSON)
   }, [cartState])
 
-  console.log(cartState)
-
   const { addedCoffees, totalCoffeesAddedToCart, totalPrice } = cartState
 
   function addCoffeeToCart(coffee: Coffee, amount: number) {
@@ -57,11 +58,11 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   }
 
   function increaseCoffeeAmount(coffeeId: string) {
-    dispatch(increaseCoffeeAmount(coffeeId))
+    dispatch(increaseAmountAddedCoffeeAction(coffeeId))
   }
 
   function decreaseCoffeeAmount(coffeeId: string) {
-    dispatch(decreaseCoffeeAmount(coffeeId))
+    dispatch(decreaseAmountAddedCoffeeAction(coffeeId))
   }
 
   return (

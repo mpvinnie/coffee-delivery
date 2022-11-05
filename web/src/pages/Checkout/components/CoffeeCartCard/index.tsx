@@ -7,31 +7,58 @@ import {
   RemoveCoffeeButton
 } from './styles'
 
-import expressoTradicional from '../../../../assets/coffees/expresso-tradicional.png'
+import { useCart } from '../../../../hooks/CartContext'
+import { AddedCoffee } from '../../../../reducers/cart/reducer'
 
-export function CoffeeCartCard() {
+interface CoffeeCartCardProps {
+  addedCoffee: AddedCoffee
+}
+
+export function CoffeeCartCard({ addedCoffee }: CoffeeCartCardProps) {
+  const { coffee, amount } = addedCoffee
+  
+  const totalPrice = coffee.price * amount
+
+  const { decreaseCoffeeAmount, increaseCoffeeAmount, removeCoffeeFromCart } = useCart()
+
+  const totalPriceInReal = totalPrice.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2
+  })
+
+  function handeDecreaseCoffeeAmount() {
+    decreaseCoffeeAmount(coffee.id)
+  }
+
+  function handeIncreaseCoffeeAmount() {
+    increaseCoffeeAmount(coffee.id)
+  }
+
+  function handleRemoveCoffeeFromCart() {
+    removeCoffeeFromCart(coffee.id)
+  }
+
   return (
     <CoffeeCartCardContainer>
-      <img src={expressoTradicional} />
+      <img src={coffee.image_url} />
       <DetailsContainer>
-        <span>Expresso Tradicional</span>
+        <span>{coffee.name}</span>
         <div>
           <CoffeeAmountContainer>
-            <button /* onClick={decreaseCoffeeAmount} */>
+            <button onClick={handeDecreaseCoffeeAmount}>
               <Minus size={14} weight="bold" />
             </button>
-              1
-            <button /* onClick={increaseCoffeeAmount} */>
+            {amount}
+            <button onClick={handeIncreaseCoffeeAmount}>
               <Plus size={14} weight="bold" />
             </button>
           </CoffeeAmountContainer>
-          <RemoveCoffeeButton>
+          <RemoveCoffeeButton onClick={handleRemoveCoffeeFromCart}>
             <Trash size={16} />
             REMOVER
           </RemoveCoffeeButton>
         </div>
       </DetailsContainer>
-      <span>R$ 9,90</span>
+      <span>R$ {totalPriceInReal}</span>
     </CoffeeCartCardContainer>
   )
 }

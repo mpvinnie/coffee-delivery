@@ -37,7 +37,7 @@ export function increaseAmountAddedCoffeeAction(coffeeId: string) {
 
 export function decreaseAmountAddedCoffeeAction(coffeeId: string) {
   return {
-    type: CartActionTypes.INCREASE_AMOUNT_ADDED_COFFEE,
+    type: CartActionTypes.DECREASE_AMOUNT_ADDED_COFFEE,
     payload: {
       coffeeId
     }

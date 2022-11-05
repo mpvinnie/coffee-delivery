@@ -6,6 +6,7 @@ import {
   Money
 } from 'phosphor-react'
 import { useState } from 'react'
+import { useCart } from '../../hooks/CartContext'
 import { CoffeeCartCard } from './components/CoffeeCartCard'
 import { Input } from './components/Input'
 import {
@@ -26,6 +27,22 @@ type PaymentMethods = 'CREDIT_CARD' | 'DEBIT_CARD' | 'MONEY'
 
 export function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethods>('CREDIT_CARD')
+
+  const { addedCoffees, totalPrice } = useCart()
+
+  const totalPriceItemsInReal = totalPrice.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2
+  })
+
+  const deliveryPrice = 3.50
+
+  const deliveryPriceInReal = deliveryPrice.toLocaleString('pt-BR', {
+    minimumFractionDigits: 2
+  })
+
+  const totalOrderInReal = (totalPrice + deliveryPrice).toLocaleString('pt-BR', {
+    minimumFractionDigits: 2
+  })
 
   return (
     <CheckoutContainer>
@@ -94,28 +111,35 @@ export function Checkout() {
       <SelectedCoffeeList>
         <strong>Cafés selecionados</strong>
         <CartContainer>
-          <CoffeeCartCard />
-          <CoffeeCartCard />
-          <CoffeeCartCard />
+          {addedCoffees.length > 0 ?
+            (
+              <>
+                {addedCoffees.map(addedCoffee => 
+                  <CoffeeCartCard key={addedCoffee.coffee.id} addedCoffee={addedCoffee} />
+                )}
       
-          <Resume>
-            <p>
-              <label>Total de itens</label>
-              <span>R$ 29,70</span>
-            </p>
-            <p>
-              <label>Entrega</label>
-              <span>R$ 3,50</span>
-            </p>
-            <p>
-              <label>Total</label>
-              <strong>R$ 33,20</strong>
-            </p>
-          </Resume>
-      
-          <ConfirmOrderButton to="/success">
-            CONFIRMAR PEDIDO
-          </ConfirmOrderButton>
+                <Resume>
+                  <p>
+                    <label>Total de itens</label>
+                    <span>R$ {totalPriceItemsInReal}</span>
+                  </p>
+                  <p>
+                    <label>Entrega</label>
+                    <span>R$ {deliveryPriceInReal}</span>
+                  </p>
+                  <p>
+                    <label>Total</label>
+                    <strong>R$ {totalOrderInReal}</strong>
+                  </p>
+                </Resume>
+        
+                <ConfirmOrderButton to="/success">
+                CONFIRMAR PEDIDO
+                </ConfirmOrderButton>
+              </>
+            )
+            : <span>Nenhum café selecionado</span>
+          }
         </CartContainer>
       </SelectedCoffeeList>
     </CheckoutContainer>

@@ -40,14 +40,14 @@ export function cartReducer(state: CartState, action: any) {
     })
   case CartActionTypes.REMOVE_COFFEE_FROM_CART:
     return produce(state, draft => {
-      draft.addedCoffees = state.addedCoffees.filter(addedCoffee => addedCoffee.coffee.id !== action.coffeeId)
+      draft.addedCoffees = state.addedCoffees.filter(addedCoffee => addedCoffee.coffee.id !== action.payload.coffeeId)
 
       draft.totalCoffeesAddedToCart = calcTotalCoffeesAddedToCart(draft.addedCoffees)
 
       draft.totalPrice = calcTotalPriceOfCoffeesAddedToCart(draft.addedCoffees)
     })
   case CartActionTypes.INCREASE_AMOUNT_ADDED_COFFEE: {
-    const addedCoffeeIndex = state.addedCoffees.findIndex(addedCoffee => addedCoffee.coffee.id === action.coffeeId)
+    const addedCoffeeIndex = state.addedCoffees.findIndex(addedCoffee => addedCoffee.coffee.id === action.payload.coffeeId)
 
     if (addedCoffeeIndex < 0) {
       return state
@@ -65,7 +65,7 @@ export function cartReducer(state: CartState, action: any) {
     })
   }
   case CartActionTypes.DECREASE_AMOUNT_ADDED_COFFEE: {
-    const addedCoffeeIndex = state.addedCoffees.findIndex(addedCoffee => addedCoffee.coffee.id === action.coffeeId)
+    const addedCoffeeIndex = state.addedCoffees.findIndex(addedCoffee => addedCoffee.coffee.id === action.payload.coffeeId)
 
     if (addedCoffeeIndex < 0) {
       return state
@@ -73,7 +73,7 @@ export function cartReducer(state: CartState, action: any) {
 
     return produce(state, draft => {
       if (draft.addedCoffees[addedCoffeeIndex].amount === 1) {
-        draft.addedCoffees = draft.addedCoffees.filter(addedCoffee => addedCoffee.coffee.id !== action.coffeeId)
+        draft.addedCoffees = draft.addedCoffees.filter(addedCoffee => addedCoffee.coffee.id !== action.payload.coffeeId)
       } else {
         draft.addedCoffees[addedCoffeeIndex] = {
           ...draft.addedCoffees[addedCoffeeIndex],
